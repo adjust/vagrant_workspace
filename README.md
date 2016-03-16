@@ -1,28 +1,35 @@
-# Vagrant::Workspace
+# Vagrant Workspace Manager
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/vagrant/workspace`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This plugin allows you to save and load workspace configuration files. These configuration files simplify the workflow of switching git branches, when you work on multiple projects at once.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install the plugin with a typical Vagrant procedure:
 
-```ruby
-gem 'vagrant-workspace'
+```sh
+$ vagrant plugin install vagrant-workspace
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install vagrant-workspace
 
 ## Usage
 
-TODO: Write usage instructions here
+Example vagrant configuration:
+```ruby
+Vagrant.configure("2") do |config|
+  config.workspace.absolute_path = '/adjust'
+end
+```
+
+Example workspace file:
+```yml
+# workspaces/megabug.yml
+project1: megabug_branch_name
+project2: megabug_branch
+```
+
+Example command:
+```sh
+$ vagrant workspace workspaces/megabug.yml
+```
 
 ## Development
 
