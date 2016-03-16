@@ -7,7 +7,7 @@ This plugin allows you to save and load workspace configuration files. These con
 Install the plugin with a typical Vagrant procedure:
 
 ```sh
-$ vagrant plugin install vagrant-workspace
+$ vagrant plugin install vagrant_workspace
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ $ vagrant plugin install vagrant-workspace
 Example vagrant configuration:
 ```ruby
 Vagrant.configure("2") do |config|
-  config.workspace.absolute_path = '/adjust'
+  config.workspace.absolute_path = '/adjust' # default is '/home/vagrant'
 end
 ```
 
@@ -39,5 +39,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/vagrant-workspace.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/adjust/vagrant_workspace.
