@@ -21,14 +21,16 @@ end
 
 Example workspace file:
 ```yml
-# workspaces/megabug.yml
-project1: megabug_branch_name
-project2: megabug_branch
+# workspaces/master.yml
+dashboard:
+  checkout: master
+accounts:
+  checkout: master
 ```
 
 Example command:
 ```sh
-$ vagrant workspace workspaces/megabug.yml
+$ vagrant workspace checkout master
 ```
 
 ## Development

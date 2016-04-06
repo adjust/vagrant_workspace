@@ -1,4 +1,5 @@
 require 'vagrant'
+
 require 'vagrant_workspace/plugin'
 
 module VagrantWorkspace
