@@ -8,8 +8,8 @@ module VagrantWorkspace
     DESC
 
     command 'workspace' do
-      require_relative 'command'
-      Command
+      require_relative 'command/root'
+      Command::Root
     end
 
     config 'workspace' do
