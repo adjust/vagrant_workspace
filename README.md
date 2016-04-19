@@ -28,9 +28,10 @@ accounts:
   checkout: master
 ```
 
-Example command:
+Available commands:
 ```sh
 $ vagrant workspace checkout master
+$ vagrant workspace pull master
 ```
 
 ## Development
