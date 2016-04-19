@@ -19,10 +19,10 @@ module VagrantWorkspace
           Checkout
         end
 
-        # @subcommands.register(:pull) do
-        #   require_relative 'pull'
-        #   Pull
-        # end
+        @subcommands.register(:pull) do
+          require_relative 'pull'
+          Pull
+        end
       end
 
       def execute
