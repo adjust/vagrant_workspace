@@ -22,14 +22,17 @@ end
 Example workspace file:
 ```yml
 # workspaces/mega_feature.yml
+_all:
+  before:
+    - git fetch origin
+  after:
+    - echo 'done!'
 project1:
   run:
-    - git fetch origin
     - git checkout mega_feature
     - bundle install
 project2:
   run:
-    - git fetch origin
     - git checkout mega_feature
     - npm install
 ```

@@ -11,20 +11,40 @@ module VagrantWorkspace
       end
 
       def call(env)
-        projects.each do |project_name, project|
+        workspace_hash.each do |project_name, project|
+          next if project_name == '_all'
+
           puts "Executing commands on #{project_name}:"
-          project['run'].each do |command|
-            puts "$ #{command}"
-            machine.communicate.execute "cd #{path(project_name)} && #{command}"
-          end
+          execute(project_name, before_commands)
+          execute(project_name, project['run'])
+          execute(project_name, after_commands)
         end
         app.call(env)
       end
 
       private
 
-      def projects
-        YAML.load_file(workspace_file)
+      def execute(project_name, commands)
+        commands.each do |command|
+          puts "$ #{command}"
+          machine.communicate.execute "cd #{path(project_name)} && #{command}"
+        end
+      end
+
+      def before_commands
+        return [] unless workspace_hash['_all']
+        return [] unless workspace_hash['_all']['before']
+        workspace_hash['_all']['before']
+      end
+
+      def after_commands
+        return [] unless workspace_hash['_all']
+        return [] unless workspace_hash['_all']['after']
+        workspace_hash['_all']['after']
+      end
+
+      def workspace_hash
+        @workspace_hash ||= YAML.load_file(workspace_file)
       end
 
       def path(project)
